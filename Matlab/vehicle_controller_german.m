@@ -42,7 +42,7 @@ for i = 2:length(t_Sim)
     % Fehlerberechnung
     e = v_Target(i) - v_Controller(i-1);
     
-    % Dynamische Zeitkonstante für den Integralanteil
+    % Dynamische Zeitkonstante für die Integralzeitkonstanstante
     T_Integral = 0.1 * m / (2 * C * v_Controller(i-1) + B);
     
     % Alternative Berechnungsmethoden für T_Integral (kann aktiviert werden)
@@ -53,15 +53,10 @@ for i = 2:length(t_Sim)
     Ki = Kp / T_Integral;
     Kd = Kp * T_Derivative;
 
-    % Integrierter Fehler mit Anti-Windup
+    % Integrierter Fehler e dt
     e_Integral = e_Integral + e * t_Delta;
-    
-    % Anti-Windup
-    if F_pid == F_Saturated
-        e_Integral = e_Integral - e * t_Delta;
-    end
 
-    % Differenzialanteil
+    % Differentieller Fehler de/dt
     e_Derivative = (e - e_Prev) / t_Delta;
 
     % PID-Steuerkraft berechnen
