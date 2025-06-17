@@ -24,9 +24,9 @@ v_Controller = 100.0 / 3.6 * np.ones_like(t_Controller)  # km/h -> m/s
 d_Min = 100.0 * np.ones_like(t_Controller)  # m
 d_Controller = 200.0 * np.ones_like(t_Controller)  # initialize distance with 200 m/s
 F_Controller = np.zeros_like(t_Controller)  # empty array
-K_Controller_v = 10000.0 # common controller gain
+K_Controller_v = 5000 # common controller gain
 K_Integral_v = coefficient_A  # initial integral gain
-K_Controller_d = -0.25
+K_Controller_d = -0.75
 K_Integral_d = v_Ahead[0]
 
 """Simulation"""
