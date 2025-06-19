@@ -33,7 +33,7 @@ K_Integral_d = v_Ahead[0]
 for index in range(1, len(t_Controller)):  # simulation loop
     e_Controller_d = d_Min[index - 1] - d_Controller[index - 1]  # error distance
     K_Proportional_d = K_Controller_d * e_Controller_d  # proportional amplified error distance
-    T_Integral_d = K_Controller_v / vehicle_mass
+    T_Integral_d = 7.5 * vehicle_mass / K_Controller_v
     K_Integral_d = K_Integral_d + K_Proportional_d * t_Delta / T_Integral_d
     K_Integral_d = max(min(K_Integral_d, v_Max), v_Min)  # anti windup
     v_Setpoint[index] = min(K_Proportional_d + K_Integral_d, v_Max)  # v_Min<v_Setpoint<v_Max
